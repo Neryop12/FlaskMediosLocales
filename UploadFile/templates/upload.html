@@ -1,0 +1,36 @@
+<!doctype html>
+<title>Medios Locales</title>
+<h2>Seleccionar Archivo</h2>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul class=flashes>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+	{% block content %}
+    
+	<label for="medio">Medio: </label>
+    <input type="text" id="medio" name="medio" /><br>
+    <label for="cliente">Cliente: </label>
+    <input type="text" id="cliente" name="cliente" /><br>
+    <label for="pais">Pais: </label>
+    <input type="text" id="pais" name="pais" /><br>	
+        
+    
+	{% endblock %}
+		<p>
+		
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Procesar">
+	</p>
+</form>
